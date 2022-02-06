@@ -15,6 +15,19 @@
 			rel="stylesheet"
 		/>
 
+		<!-- leafletjs -->
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+			crossorigin=""
+		/>
+		<script
+			src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""
+		></script>
+
 		<!-- stylesheet -->
 		<link rel="stylesheet" href="style.css" />
 		<script src="index.js" defer></script>
@@ -33,14 +46,44 @@
 		</style>
 	</head>
 	<body>
-		IP Address Tracker Search for any IP address or domain IP Address Location Timezone UTC
-		<!-- add offset value dynamically using the API -->
-		ISP
+		<main>
+			<div class="flex container flow" style="--flow-space: 2rem">
+				<h1 class="text-light fw-500">IP Address Tracker</h1>
+				<form class="search">
+					<input
+						type="text"
+						placeholder="Search for any IP address or domain"
+						name="ip"
+						id="ip-address"
+					/>
+					<button class="grid" type="submit">
+						<svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
+							<path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6" />
+						</svg>
+					</button>
+				</form>
+				<div class="flex details">
+					<div class="flow" style="--flow-space: 0.5rem">
+						<h4 class="text-dark-gray fs-200 letter-spacing-3 uppercase">IP Address</h4>
+						<h2 class="text-very-dark-gray fw-500" id="ip">192.212.174.101</h2>
+					</div>
+					<div class="flow" style="--flow-space: 0.5rem">
+						<h4 class="text-dark-gray fs-200 letter-spacing-3 uppercase">Location</h4>
+						<h2 class="fw-500 uppercase" id="location">Brooklyn NY 10001</h2>
+					</div>
+					<div class="flow" style="--flow-space: 0.5rem">
+						<h4 class="text-dark-gray fs-200 letter-spacing-3 uppercase">Timezone</h4>
+						<h2 class="text-very-dark-gray fw-500">UTC <span id="timezone"></span></h2>
+					</div>
+					<div class="flow" style="--flow-space: 0.5rem">
+						<h4 class="text-dark-gray fs-200 letter-spacing-3 uppercase">ISP</h4>
+						<h2 class="text-very-dark-gray fw-500" id="isp">Starlink</h2>
+					</div>
+				</div>
+			</div>
+			<div class="container" id="map">map</div>
+		</main>
 
-		<div class="attribution">
-			Challenge by
-			<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-			Coded by <a href="#">Your Name Here</a>.
-		</div>
+		<!-- add offset value dynamically using the API -->
 	</body>
 </html>
