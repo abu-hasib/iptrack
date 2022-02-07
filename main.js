@@ -91,4 +91,5 @@ async function main(searchParams) {
 	pinOnMap(lat, lng);
 }
 
+alert('Temporarily disable ad blocker if map does not display and refresh.');
 onStart();
