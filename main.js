@@ -9,7 +9,12 @@ let map = L.map('map');
 function onStart() {
 	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 
-	fetch(URL, { mode: 'cors' })
+	fetch(URL, {
+		mode: 'cors',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
+	})
 		.then((response) => response.json())
 		.then((data) => {
 			const { lat, lng } = data.location;
@@ -62,7 +67,12 @@ async function main(searchParams) {
 		? (URL += `&ipAddress=${searchParams}`)
 		: (URL += `&domain=${searchParams}`);
 
-	const data = await fetch(URL, { mode: 'cors' })
+	const data = await fetch(URL, {
+		mode: 'cors',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
+	})
 		.then((response) => {
 			if (response.status === 422)
 				throw new TypeError(response.statusText + ' Try another domain or IP address.');
