@@ -16,7 +16,8 @@ const icon = L.icon({
 });
 
 function onStart() {
-	let URL = `https://cors-anywhere.herokuapp.com/https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
+	let URL = `
+	https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 
 	fetch(URL)
 		.then((response) => response.json())
@@ -66,7 +67,7 @@ search.addEventListener('submit', (e) => {
 });
 
 async function main(searchParams) {
-	let URL = `https://cors-anywhere.herokuapp.com/https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
+	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 	/\d/.test(searchParams)
 		? (URL += `&ipAddress=${searchParams}`)
 		: (URL += `&domain=${searchParams}`);
