@@ -1,3 +1,4 @@
+import { key, access } from './api.js';
 const ipHolder = document.querySelector('#ip');
 const locHolder = document.querySelector('#location');
 const timezoneHolder = document.querySelector('#timezone');
@@ -6,7 +7,7 @@ const search = document.querySelector('.search');
 let map = L.map('map');
 
 function onStart() {
-	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.KEY}`;
+	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 
 	fetch(URL)
 		.then((response) => response.json())
@@ -30,7 +31,7 @@ function setMapView(lat, lng) {
 			id: 'mapbox/streets-v11',
 			tileSize: 512,
 			zoomOffset: -1,
-			accessToken: process.env.ACCESS,
+			accessToken: access,
 		}
 	).addTo(map);
 }
@@ -56,7 +57,7 @@ search.addEventListener('submit', (e) => {
 });
 
 async function main(searchParams) {
-	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.KEY}`;
+	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 	/\d/.test(searchParams)
 		? (URL += `&ipAddress=${searchParams}`)
 		: (URL += `&domain=${searchParams}`);
