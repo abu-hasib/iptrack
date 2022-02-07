@@ -271,6 +271,11 @@ main > *:first-child > h1 {
 	border: 1px solid transparent;
 }
 
+.search *:nth-child(2):hover,
+.search *:nth-child(2):focus {
+	background-color: hsl(var(--clr-very-dark-gray));
+}
+
 .search input {
 	outline: transparent solid 2px;
 	border: none;
