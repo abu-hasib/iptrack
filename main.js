@@ -6,8 +6,17 @@ const ispHolder = document.querySelector('#isp');
 const search = document.querySelector('.search');
 let map = L.map('map');
 
+const icon = L.icon({
+	iconUrl: './images/icon-location.svg',
+	iconSize: [40, 50], // size of the icon
+	shadowSize: [50, 64], // size of the shadow
+	iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+	shadowAnchor: [4, 62], // the same for the shadow
+	popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+
 function onStart() {
-	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
+	let URL = `https://cors-anywhere.herokuapp.com/https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 
 	fetch(URL)
 		.then((response) => response.json())
@@ -37,7 +46,7 @@ function setMapView(lat, lng) {
 }
 
 function pinOnMap(lat, lng) {
-	var marker = L.marker([`${lat}`, `${lng}`], { color: 'black', fillColor: '#000' }).addTo(map);
+	var marker = L.marker([`${lat}`, `${lng}`], { icon }).addTo(map);
 	marker.bindPopup('<b>Hey!</b><br>Your ISP is here.').openPopup();
 }
 
@@ -57,7 +66,7 @@ search.addEventListener('submit', (e) => {
 });
 
 async function main(searchParams) {
-	let URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
+	let URL = `https://cors-anywhere.herokuapp.com/https://geo.ipify.org/api/v2/country,city?apiKey=${key}`;
 	/\d/.test(searchParams)
 		? (URL += `&ipAddress=${searchParams}`)
 		: (URL += `&domain=${searchParams}`);

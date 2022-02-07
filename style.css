@@ -30,6 +30,12 @@
 	--ff-sans-serif: 'Rubik', sans-serif;
 }
 
+@media (max-width: 50em) {
+	:root {
+		--fs-400: 1rem;
+	}
+}
+
 /* ------------------- */
 /* Reset               */
 /* ------------------- */
@@ -262,6 +268,7 @@ main > *:first-child > h1 {
 	height: 100%;
 	place-items: center;
 	border-radius: 0 0.6em 0.6em 0;
+	border: 1px solid transparent;
 }
 
 .search input {
@@ -292,6 +299,10 @@ main > *:first-child > h1 {
 }
 
 @media (min-width: 51em) {
+	main > *:first-child {
+		--flow-space: 2rem;
+	}
+
 	.details > *:where(:not(:first-child)) {
 		border-left: 1px solid hsl(var(--clr-dark-gray));
 		padding-left: 2em;
@@ -299,9 +310,17 @@ main > *:first-child > h1 {
 }
 
 @media (max-width: 50em) {
+	main > *:first-child {
+		--flow-space: 0.2rem;
+	}
+	main > *:first-child > h1 {
+		margin-top: 0.5em;
+	}
+
 	.details {
 		flex-direction: column;
 		text-align: center;
 		justify-content: space-between;
+		padding: 1em 2em;
 	}
 }
